@@ -1,18 +1,26 @@
 import React from 'react';
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
-import Filter from './components/Filter/Filter';
+import { Switch, Route } from 'react-router-dom';
+import ContactsView from './components/Views/ContactsView';
+import HomeView from './components/Views/HomeView';
+import Navigation from './components/Navigation/Navigation';
+import AuthNav from './components/AuthNav/AuthNav';
+import UserMenu from './components/UserMenu/UserMenu';
 
 export default function App() {
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
+    <>
+      <header>
+        <Navigation />
+        <UserMenu />
+        <AuthNav />
+      </header>
 
-      <h2>Contacts</h2>
-      <Filter />
-
-      <ContactList />
-    </div>
+      <Switch>
+        <Route exact path="/" component={HomeView} />
+        {/* <Route path="/register" component={RegisterView} /> */}
+        {/* <Route path="/login" component={LoginView} /> */}
+        <Route path="/contacts" component={ContactsView} />
+      </Switch>
+    </>
   );
 }

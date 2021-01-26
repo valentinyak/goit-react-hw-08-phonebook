@@ -19,7 +19,7 @@ function ContactList({ contacts, onDelete }) {
   useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
 
   return (
-    <ul>
+    <ul style={{ textAlign: 'left' }}>
       {contacts.map(contact => {
         return (
           <li key={contact.id}>
