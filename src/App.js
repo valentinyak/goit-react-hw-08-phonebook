@@ -5,6 +5,8 @@ import HomeView from './components/Views/HomeView';
 import Navigation from './components/Navigation/Navigation';
 import AuthNav from './components/AuthNav/AuthNav';
 import UserMenu from './components/UserMenu/UserMenu';
+import RegisterView from './components/Views/RegisterView';
+import LoginView from './components/Views/LoginView';
 
 export default function App() {
   return (
@@ -17,8 +19,8 @@ export default function App() {
 
       <Switch>
         <Route exact path="/" component={HomeView} />
-        {/* <Route path="/register" component={RegisterView} /> */}
-        {/* <Route path="/login" component={LoginView} /> */}
+        <Route path="/register" component={RegisterView} />
+        <Route path="/login" component={LoginView} />
         <Route path="/contacts" component={ContactsView} />
       </Switch>
     </>

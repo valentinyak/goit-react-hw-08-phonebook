@@ -1,3 +1,7 @@
 export default function HomeView() {
-  return <h1>Your phonebook here! Please, Login or Register.</h1>;
+  return (
+    <main>
+      <h1>Your phonebook here! Please, Login or Register.</h1>
+    </main>
+  );
 }
