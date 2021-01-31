@@ -1,17 +1,25 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { authSelectors, authOperations } from '../../redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserEmail, getIsLoggedIn } from '../../redux/auth/auth-selectors';
+import authOperations from '../../redux/auth/auth-operations';
 
 export default function UserMenu() {
-  //   const dispatch = useDispatch();
-  //   const name = useSelector(authSelectors.getUsername);
+  const dispatch = useDispatch();
+  const email = useSelector(getUserEmail);
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
     <div>
-      <span>Добро пожаловать, </span>
-      <button type="button" onClick>
-        {/* <button type="button" onClick={() => dispatch(authOperations.logOut())}></button> */}
-        Logout
-      </button>
+      {isLoggedIn && (
+        <>
+          <span>{email}</span>
+          <button
+            type="button"
+            onClick={() => dispatch(authOperations.logOut())}
+          >
+            Logout
+          </button>
+        </>
+      )}
     </div>
   );
 }
