@@ -12,24 +12,22 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    data.isLoggedIn = true;
-    return data;
-  } catch (error) {
-    alert(error.message);
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      token.set(data.token);
+      data.isLoggedIn = true;
+      return data;
+    } catch (error) {
+      alert(error.message);
+      return thunkAPI.rejectWithValue();
+    }
+  },
+);
 
-    return {
-      user: { name: null, email: null },
-      token: null,
-      isLoggedIn: false,
-    };
-  }
-});
-
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
@@ -37,21 +35,17 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     return data;
   } catch (error) {
     alert(error.message);
-
-    return {
-      user: { name: null, email: null },
-      token: null,
-      isLoggedIn: false,
-    };
+    return thunkAPI.rejectWithValue();
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
     alert(error.message);
+    return thunkAPI.rejectWithValue();
   }
 });
 
@@ -70,8 +64,8 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
-      return error;
+      alert(error.message);
+      return thunkAPI.rejectWithValue();
     }
   },
 );
