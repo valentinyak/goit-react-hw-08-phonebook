@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import AppBar from '@material-ui/core/AppBar';
 
 import ContactsView from './components/Views/ContactsView';
 import HomeView from './components/Views/HomeView';
@@ -30,10 +31,13 @@ export default function App() {
   return (
     !isFetchingCurrentUser && (
       <>
-        <header>
+        <AppBar
+          position="static"
+          style={{ flexDirection: 'row', minHeight: '60px' }}
+        >
           <Navigation />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
-        </header>
+        </AppBar>
 
         <Switch>
           <PublicRoute exact path="/">

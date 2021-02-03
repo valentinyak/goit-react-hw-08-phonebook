@@ -15,7 +15,7 @@ export default function ContactsView() {
           <h1>Phonebook</h1>
           <ContactForm />
 
-          <h2>Contacts</h2>
+          <h2>Your contacts</h2>
           <Filter />
 
           <ContactList />

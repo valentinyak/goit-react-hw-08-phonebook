@@ -1,13 +1,14 @@
 body {
-  width: 600px;
-  margin-left: calc((100vw - 600px) / 2);
-  margin-right: calc((100vw - 600px) / 2);
+  width: 800px;
+  margin-left: calc((100vw - 800px) / 2);
+  margin-right: calc((100vw - 800px) / 2);
   margin-top: 20px;
   margin-bottom: 20px;
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -31,6 +32,4 @@ header {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-
-  border-bottom: 1px solid #000;
 }

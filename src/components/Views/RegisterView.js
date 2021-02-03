@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import authOperations from '../../redux/auth/auth-operations';
 
 const styles = {
@@ -35,28 +37,40 @@ export default function RegisterView() {
 
   return (
     <main>
-      <h2>Please, fill these fields </h2>
+      <h2>Please fill these fields for register</h2>
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.inputContainer}>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" autoComplete="username" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" autoComplete="username" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            autoComplete="current-password"
-          />
-        </div>
+        <TextField
+          label="Email"
+          variant="outlined"
+          size="small"
+          name="email"
+          autoComplete="email"
+          style={{ margin: '10px' }}
+        />
 
-        <button type="submit">Register</button>
+        <TextField
+          label="Name"
+          variant="outlined"
+          size="small"
+          name="name"
+          autoComplete="username"
+          style={{ margin: '10px' }}
+        />
+
+        <TextField
+          label="Password"
+          variant="outlined"
+          size="small"
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          style={{ margin: '10px' }}
+        />
+
+        <Button variant="contained" size="small" type="submit">
+          Register
+        </Button>
       </form>
     </main>
   );

@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import authOperations from '../../redux/auth/auth-operations';
 
 const styles = {
@@ -31,24 +33,31 @@ export default function LoginView() {
 
   return (
     <main>
-      <h2>Please, logIn to see your contacts</h2>
+      <h2>Please log in to see your contacts</h2>
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.inputContainer}>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" autoComplete="email" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            autoComplete="current-password"
-          />
-        </div>
+        <TextField
+          label="Email"
+          variant="outlined"
+          size="small"
+          name="email"
+          autoComplete="email"
+          style={{ margin: '10px' }}
+        />
 
-        <button type="submit">LogIn</button>
+        <TextField
+          label="Password"
+          variant="outlined"
+          size="small"
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          style={{ margin: '10px' }}
+        />
+
+        <Button variant="contained" size="small" type="submit">
+          LogIn
+        </Button>
       </form>
     </main>
   );

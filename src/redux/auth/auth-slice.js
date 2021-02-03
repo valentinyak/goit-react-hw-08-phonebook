@@ -30,6 +30,9 @@ const authSlice = createSlice({
     [authOperations.fetchCurrentUser.pending](state) {
       state.isFetchingCurrentUser = true;
     },
+    [authOperations.fetchCurrentUser.rejected](state) {
+      state.isFetchingCurrentUser = false;
+    },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;

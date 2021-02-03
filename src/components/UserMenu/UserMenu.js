@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import { getUserEmail } from '../../redux/auth/auth-selectors';
 import authOperations from '../../redux/auth/auth-operations';
 
@@ -8,10 +9,16 @@ export default function UserMenu() {
 
   return (
     <div>
-      <span>{email}</span>
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
+      <span>{`You are logged in as ${email} `}</span>
+
+      <Button
+        variant="contained"
+        size="small"
+        style={{ marginRight: '15px' }}
+        onClick={() => dispatch(authOperations.logOut())}
+      >
         Logout
-      </button>
+      </Button>
     </div>
   );
 }

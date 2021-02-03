@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './ContactItem.module.css';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function ContactItem({ contact, onClick }) {
   const { name, number, id } = contact;
@@ -8,9 +9,14 @@ export default function ContactItem({ contact, onClick }) {
   return (
     <span>
       {name}: {number}{' '}
-      <button className={s.deletBtn} id={id} onClick={onClick}>
-        delete
-      </button>
+      <IconButton
+        aria-label="delete"
+        style={{ width: '5px', height: '5px' }}
+        id={id}
+        onClick={onClick}
+      >
+        <DeleteIcon />
+      </IconButton>
     </span>
   );
 }

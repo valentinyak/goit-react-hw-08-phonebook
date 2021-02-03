@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import TextField from '@material-ui/core/TextField';
 import { connect, useSelector } from 'react-redux';
 
 import * as contactsActions from '../../redux/contacts/contacts-operations';
@@ -12,7 +15,7 @@ function ContactForm({ addContact }) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const { nameInput, phoneInput } = e.target.form;
+    const { nameInput, phoneInput } = e.currentTarget.form;
     const isContactExist = getAllContacts(state).find(
       contact => contact.name === nameInput.value,
     );
@@ -34,19 +37,32 @@ function ContactForm({ addContact }) {
 
   return (
     <form>
-      <label>
-        Insert contact name
-        <input type="text" name="nameInput" />
-      </label>
+      <span>Add a contact</span>
 
-      <label>
-        Insert contact number
-        <input type="text" name="phoneInput" />
-      </label>
+      <TextField
+        label="Contact name"
+        variant="outlined"
+        size="small"
+        name="nameInput"
+        style={{ margin: '7px' }}
+      />
 
-      <button type="submit" onClick={handleSubmit}>
-        Add contact
-      </button>
+      <TextField
+        label="Contact number"
+        variant="outlined"
+        size="small"
+        name="phoneInput"
+        style={{ margin: '7px' }}
+      />
+
+      <Fab
+        size="small"
+        color="secondary"
+        aria-label="add"
+        onClick={handleSubmit}
+      >
+        <AddIcon />
+      </Fab>
     </form>
   );
 }

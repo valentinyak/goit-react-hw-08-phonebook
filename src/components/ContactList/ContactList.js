@@ -12,7 +12,7 @@ function ContactList({ contacts, onDelete }) {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
   const handleDelete = e => {
-    const contact = getContactById(state, e.target.id);
+    const contact = getContactById(state, e.currentTarget.id);
     onDelete(contact);
   };
 
