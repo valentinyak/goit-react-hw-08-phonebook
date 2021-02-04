@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
@@ -26,7 +25,6 @@ function ContactForm({ addContact }) {
     }
 
     addContact({
-      id: shortid.generate(),
       name: nameInput.value,
       number: phoneInput.value,
     });

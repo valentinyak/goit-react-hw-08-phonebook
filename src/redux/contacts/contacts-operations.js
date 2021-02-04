@@ -1,5 +1,8 @@
 import * as contactsAPI from '../../services/contacts-api';
 import * as contactsActions from './contacts-actions';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 export const fetchContacts = () => async dispatch => {
   dispatch(contactsActions.fetchContactsRequest());
@@ -17,8 +20,8 @@ export const addContact = contact => async dispatch => {
   dispatch(contactsActions.addContactsRequest());
 
   try {
-    contactsAPI.addContactToDB(contact);
-    dispatch(contactsActions.addContactsSuccess(contact));
+    const newContact = await contactsAPI.addContactToDB(contact);
+    dispatch(contactsActions.addContactsSuccess(newContact));
   } catch (error) {
     dispatch(contactsActions.addContactsError(error));
   }

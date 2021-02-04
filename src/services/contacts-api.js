@@ -8,7 +8,11 @@ export const getContacts = () => {
   return contacts;
 };
 export const addContactToDB = contact => {
-  axios.post('/contacts', contact);
+  const contacts = axios
+    .post('/contacts', contact)
+    .then(response => response.data);
+
+  return contacts;
 };
 export const deleteContactFromDB = contact => {
   axios.delete(`/contacts/${contact.id}`);
